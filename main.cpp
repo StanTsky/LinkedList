@@ -1,13 +1,22 @@
-// Test program for the LinkedList class
+/*
+--------------------------------------------------------------------
+* Name:       Stan Turovsky
+* Class:      Advanced C++
+* Files:      main.cpp, LinkedList.cpp, LinkedList.h, Node.h
+* Purpose:    Test program for the LinkedList class
+*             -Nodes are added from different directions, then counted and listed
+*             -Duplicates are found and removed, then nodes are counted again
+*             -Nodes are then searched for a number twice 
+*              to makes sure no duplicates are left
+--------------------------------------------------------------------
+*/
 
 // Preprocessor directives
 #include "LinkedList.h"
 #include <iostream>
 using namespace std;
 
-
-// main function
-int main()
+int main()              // main function
 {
 	LinkedList list;
 
@@ -24,7 +33,7 @@ int main()
 	list.addBack(3);
 	list.addFront(3);
 
-	cout << "node count: " <<  list.countNodes() << endl;
+	cout << "Node count: " <<  list.countNodes() << endl;
 
 	if (list.isEmpty())
 		cout << "List is empty" << endl;
@@ -37,7 +46,7 @@ int main()
 
 	list.removeDuplicates();
 
-	cout << "node count: " << list.countNodes() << endl;
+	cout << "Node count: " << list.countNodes() << endl;
 
 	list.display();
 
@@ -55,12 +64,10 @@ int main()
 
 	//list.removeBack();
 	//list.display();
-
 	//list.removeFront();
 	list.display();
 
 	// Leave this stuff at the end.
 	cout << endl;
-	// system("pause");
 	return 0;
 }

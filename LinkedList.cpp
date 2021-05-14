@@ -1,7 +1,6 @@
 #include "LinkedList.h"
 #include <iostream>
 
-
 LinkedList::LinkedList()
 {
 	first = new Node();
@@ -24,7 +23,8 @@ void LinkedList::addFront(int value)
 												// Attach new node to the list
 		newNode->next = first->next;
 		first->next = newNode;
-		std::cout << "added node " << first->next << " with data = " << newNode->data << std::endl;
+		std::cout << "Added node " << first->next << " with data = " << newNode->data 
+              << " to the front" << std::endl;
 	//}
 }
 
@@ -45,7 +45,8 @@ void LinkedList::addBack(int value)
 
 		temp->next = newNode;  // Attach new node to end of list
 
-		std::cout << "added node " << temp->next << " with data = " << newNode->data << std::endl;
+		std::cout << "Added node " << temp->next << " with data = " << newNode->data 
+              << " to the back" << std::endl;
 	//}
 
 }
@@ -66,16 +67,16 @@ void LinkedList::removeFront()
 void LinkedList::removeBack()
 {	
 	Node *trailer = first;						// Point trailer pointer to dummy	
-	Node *temp = trailer->next;					// Point temp pointer to trailer's next
+	Node *temp = trailer->next;				// Point temp pointer to trailer's next
 	
-	while (temp->next != nullptr)				// Traverse list until temp is on last node
+	while (temp->next != nullptr)			// Traverse list until temp is on last node
 	{
-		trailer = temp;							// previous next address
-		temp = temp->next;						// current next address
+		trailer = temp;							    // previous next address
+		temp = temp->next;						  // current next address
 	}
 
 	trailer->next = nullptr;					// Set trailer's next to null	
-	delete temp;								// Delete temp
+	delete temp;								      // Delete temp
 }
 
 Node *LinkedList::find(int value)
@@ -117,27 +118,27 @@ void LinkedList::removeDuplicates()
 	// adapted from code in
 	// https://www.geeksforgeeks.org/remove-duplicates-from-an-unsorted-linked-list/
 
-	Node *trailer = first;						// point trailer pointer to dummy
+	Node *trailer = first;			// point trailer pointer to dummy
 	Node *temp;									// temp node pointer
 	Node *dupe;									// dupe node pointer
 
 	// check that trailer is not empty and its next link is not empty
 	while (trailer != nullptr) //  && trailer->next != nullptr
 	{
-		temp = trailer;							// assign temp node to be trailer
+		temp = trailer;							      // assign temp node to be trailer
 		while (temp->next != nullptr)			// loop while temp node has a next node
 		{
 			if (trailer->data == temp->next->data)	// check if trailer data equals node after temp's data
 			{
-				dupe = temp->next;					// if so, set dupe node to the node after temp
+				dupe = temp->next;					      // if so, set dupe node to the node after temp
 				temp->next = temp->next->next;		// set node after temp to skip one node
-				std::cout << "deleting node " << dupe << std::endl;
-				delete(dupe);						// delete the dupe node
+				std::cout << "Deleting duplicate node " << dupe << std::endl;
+				delete(dupe);						    // delete the dupe node
 			}
 			else
 				temp = temp->next;					// move temp node forward
 		}
-		trailer = trailer->next;					// move trailer node forward
+		trailer = trailer->next;				// move trailer node forward
 	}
 }
 
